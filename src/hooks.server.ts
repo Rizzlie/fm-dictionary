@@ -1,21 +1,15 @@
+import type { Font } from '$lib/models/Font';
 import type { Handle } from '@sveltejs/kit';
 import type { Theme } from '$lib/models/Theme';
 
 export const handle: Handle = async ({ event, resolve }) => {
-	let theme: Theme;
-
-	const newTheme = event.url.searchParams.get('theme') as Theme;
-	const cookieTheme = event.cookies.get('theme') as Theme;
-
-	if (newTheme) {
-		theme = newTheme;
-	} else if (cookieTheme) {
-		theme = cookieTheme;
-	} else {
-		theme = 'light';
-	}
+	const theme = event.cookies.get('theme') as Theme;
+	const font = event.cookies.get('font') as Font;
 
 	return resolve(event, {
-		transformPageChunk: ({ html }) => html.replace('data-theme=""', `data-theme="${theme}"`)
+		transformPageChunk: ({ html }) =>
+			html
+				.replace('data-theme=""', `data-theme="${theme}"`)
+				.replace('data-font=""', `data-font="${font}"`)
 	});
 };

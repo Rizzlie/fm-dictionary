@@ -5,6 +5,10 @@ html[data-theme="dark"] {
   --clr-accent: hsl(0, 0%, 80%);
 }
 
+html[data-font="system"] {
+  --ff-primary: system-ui;
+}
+
 body,
 a,
 path,
