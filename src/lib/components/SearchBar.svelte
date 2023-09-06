@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import WordsAutocomplete from '$lib/components/WordsAutocomplete.svelte';
 	import type { Word } from '$lib/models/Word';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import SearchIcon from '$assets/icons/search.svg?component';
@@ -16,6 +17,7 @@
 
 	const handleInput = debounce((form: HTMLFormElement) => {
 		words = [];
+
 		form.dispatchEvent(new Event('submit', { bubbles: true }));
 	}, 300);
 </script>
@@ -33,22 +35,11 @@
 		</button>
 	</form>
 
-	{#if words.length > 0}
-		<ol role="list">
-			{#each words as word}
-				<li>
-					<a href={`/k/${word.word}`} tabindex="0">
-						{word.word}
-					</a>
-				</li>
-			{/each}
-		</ol>
-	{/if}
+	<WordsAutocomplete {words} />
 </div>
 
 <style>
 	.search-bar {
-		--_border-radius: 1rem;
 		view-transition-name: search-bar;
 		width: 100%;
 		position: relative;
@@ -60,7 +51,7 @@
 		justify-content: center;
 		align-items: stretch;
 		background-color: var(--bgc-input);
-		border-radius: var(--_border-radius);
+		border-radius: var(--br-input);
 		transition: 0.3s ease;
 		z-index: 2;
 		position: relative;
@@ -73,8 +64,8 @@
 		font-weight: var(--fw-bold);
 		font-size: 1.25rem;
 		padding: 1rem;
-		border-bottom-left-radius: var(--_border-radius);
-		border-top-left-radius: var(--_border-radius);
+		border-bottom-left-radius: var(--br-input);
+		border-top-left-radius: var(--br-input);
 		color: var(--ff-primary);
 	}
 
@@ -82,8 +73,8 @@
 		border: none;
 		background-color: transparent;
 		cursor: pointer;
-		border-bottom-right-radius: var(--_border-radius);
-		border-top-right-radius: var(--_border-radius);
+		border-bottom-right-radius: var(--br-input);
+		border-top-right-radius: var(--br-input);
 		padding-inline: 1rem;
 	}
 
@@ -94,37 +85,5 @@
 
 	form button :global(svg path) {
 		fill: var(--clr-secondary);
-	}
-
-	ol {
-		z-index: 1;
-		position: absolute;
-		top: 100%;
-		left: 0;
-		right: 0;
-		background-color: var(--bgc-input);
-		box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-		border-bottom-left-radius: var(--_border-radius);
-		border-bottom-right-radius: var(--_border-radius);
-		border-top: 1px solid var(--clr-secondary);
-	}
-
-	ol::before {
-		content: '';
-		position: absolute;
-		width: 100%;
-		height: var(--_border-radius);
-		transform: translateY(calc(-100% - 1px));
-		background-color: var(--bgc-input);
-	}
-
-	ol a {
-		padding: 1rem;
-		display: block;
-		text-decoration: none;
-	}
-
-	ol a:hover {
-		text-decoration: underline;
 	}
 </style>
