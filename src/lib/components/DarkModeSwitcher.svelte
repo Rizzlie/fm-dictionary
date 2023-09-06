@@ -10,6 +10,7 @@
 	const submitUpdateTheme: SubmitFunction = () => {
 		return async ({ result }) => {
 			document.documentElement.setAttribute('data-theme', result.data.theme);
+
 			await invalidateAll();
 		};
 	};

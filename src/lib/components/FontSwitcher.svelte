@@ -2,19 +2,14 @@
 	import { enhance } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
 	import { page } from '$app/stores';
-	import type { Font } from '$lib/models/Font';
 	import type { SubmitFunction } from '@sveltejs/kit';
 
 	let form: HTMLFormElement;
 
-	const submitUpdateTheme: SubmitFunction = ({ formData }) => {
-		const font = formData.get('font') as Font;
+	const submitUpdateTheme: SubmitFunction = () => {
+		return async ({ result }) => {
+			document.documentElement.setAttribute('data-font', result.data.font);
 
-		if (font) {
-			document.documentElement.setAttribute('data-font', font);
-		}
-
-		return async () => {
 			await invalidateAll();
 		};
 	};
@@ -26,8 +21,9 @@
 		on:change={() => {
 			form.requestSubmit();
 		}}
+		bind:value={$page.data.font}
 	>
-		<option value="serif" selected={$page.data.font === 'serif'}>Serif</option>
-		<option value="system" selected={$page.data.font === 'system'}>System</option>
+		<option value="serif">Serif</option>
+		<option value="system">System</option>
 	</select>
 </form>
