@@ -1,0 +1,28 @@
+@use "styles/reset";
+@use "styles/variables";
+@use "styles/fonts";
+@use "styles/themes";
+
+body {
+  background-color: var(--bgc-body);
+  color: var(--clr-primary);
+  font-family: var(--ff-body);
+}
+
+a {
+  color: var(--clr-primary);
+}
+
+.container {
+  max-width: var(--container-width);
+  margin-inline: auto;
+}
+
+input, button {
+  font-family: var(--ff-body);
+}
+
+ul li::marker,
+ol li::marker {
+  color: var(--clr-secondary);
+}

@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import SearchBar from '$lib/components/SearchBar.svelte';
+</script>
+
+<div class="search-bar">
+	<SearchBar />
+</div>
+
+<style>
+	.search-bar {
+		margin-block: 12rem;
+	}
+</style>

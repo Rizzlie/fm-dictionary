@@ -1,0 +1,24 @@
+:root {
+  --clr-primary: hsl(0, 0%, 18%);
+  --clr-secondary: hsl(274, 83%, 60%);
+  --clr-accent: hsl(0, 0%, 43%);
+
+  --ff-primary: 'Lora', serif;
+
+  --ff-body: var(--ff-primary);
+  --ff-heading: var(--ff-primary);
+  --ff-accent: 'Cookie', cursive;
+
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  --clr-border: hsl(0, 0%, 92%);
+  --container-width: calc(720px);
+
+  --bgc-toggle-deactivated: hsl(0, 0%, 46%);
+  --bgc-toggle-actived: hsl(0, 0%, 65%);
+
+  --bgc-body: hsl(0, 0%, 100%);
+  --bgc-input: hsl(0, 0%, 96%);
+}

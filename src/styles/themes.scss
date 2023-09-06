@@ -1,0 +1,13 @@
+html[data-theme="dark"] {
+  --bgc-body: hsl(0, 0%, 18%);
+  --clr-primary: hsl(0, 0%, 80%);
+  --bgc-input: hsl(0, 0%, 30%);
+  --clr-accent: hsl(0, 0%, 80%);
+}
+
+body,
+a,
+path,
+input {
+  transition: .3s ease;
+}
