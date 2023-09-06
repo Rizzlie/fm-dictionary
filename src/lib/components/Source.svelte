@@ -18,7 +18,7 @@
 		color: var(--clr-accent);
 		font-size: 0.75rem;
 		border-top: 1px solid var(--clr-border);
-		padding-top: 1rem;
+		padding-block: 1rem;
 	}
 
 	.source a {
